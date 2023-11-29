@@ -58,7 +58,10 @@ void Anfora::svuota()
 
 void Anfora::spostaContenuto(Anfora anf)
 {
-    
+    if(this->getQt() < anf.getCapacity() - anf.getQt())
+    {
+        
+    }
 }
 
 
