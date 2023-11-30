@@ -21,12 +21,12 @@ class Anfora: public Contenitore
     bool isVuota();
 
     public:
-    Anfora(int cap):Contenitore(){this->capacity = cap;}
+    Anfora(int cap):capacity(cap), Contenitore() {}
 
     void riempi();
     void svuota();
     int getCapacity(){return this->capacity;}
-    void spostaContenuto(Anfora);
+    void spostaContenuto(Anfora &);
 
 };
 
@@ -53,14 +53,19 @@ void Anfora::riempi()
 void Anfora::svuota()
 {
     this->togli(this->getQt());
-    std::cout << "Qt: " << this->getQt() << std::endl;
 }
 
-void Anfora::spostaContenuto(Anfora anf)
+void Anfora::spostaContenuto(Anfora &anf)
 {
-    if(this->getQt() < anf.getCapacity() - anf.getQt())
+    //se c'è più qt nell'anfora di partenza rispetto allo spazio rimanente in quella di destinazione 
+    if(this->getQt() > anf.getCapacity() - anf.getQt())
     {
-        
+        this->togli(anf.getCapacity() - anf.getQt());
+        anf.riempi();     
+    } else if(this->getQt() <= anf.getCapacity() - anf.getQt())
+    {
+        anf.versa(this->getQt());
+        this->svuota(); 
     }
 }
 
