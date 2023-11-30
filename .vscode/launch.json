@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/rioma/Documents/Code/Asd/Algoritm-Exercise",
-      "program": "/home/rioma/Documents/Code/Asd/Algoritm-Exercise/build/Debug/outDebug",
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
