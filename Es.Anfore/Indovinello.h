@@ -9,6 +9,7 @@
 #define Indovinello_h
 
 #include <iostream>
+#include <unistd.h>
 #include "Anfora.h"
 
 using namespace std;
@@ -38,32 +39,39 @@ void Indovinello::risolvi()
     cout << "Tre: " << tre.getQt()<< endl;
     cout << "cinque: " << cinque.getQt()<< endl;
 
+    sleep(2);
+
 
 
     //usa tanica da 5 litri per riempire tanica 3 litri
     cinque.spostaContenuto(tre);
     cout << "Tre: " << tre.getQt()<< endl;
     cout << "cinque: " << cinque.getQt()<< endl;
+    sleep(2);
 
     //svuota tanica da 3 litri
     tre.svuota();
     cout << "Tre: " << tre.getQt()<< endl;
     cout << "cinque: " << cinque.getQt()<< endl;
+    sleep(2);
 
     //sposta tanica 5 in tanica 3
     cinque.spostaContenuto(tre);
     cout << "Tre: " << tre.getQt()<< endl;
     cout << "cinque: " << cinque.getQt()<< endl;
+    sleep(2);
     
     //riempi tanica 5
     cinque.riempi();
     cout << "Tre: " << tre.getQt()<< endl;
     cout << "cinque: " << cinque.getQt()<< endl;
+    sleep(2);
     
     //sposta tanica 5 in 3
     cinque.spostaContenuto(tre);
     cout << "Tre: " << tre.getQt()<< endl;
     cout << "cinque: " << cinque.getQt()<< endl;
+    sleep(2);
 
 }
 
