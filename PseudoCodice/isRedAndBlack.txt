@@ -1,0 +1,45 @@
+isABR(nodo, minValore, maxValore){
+    Se nodo è nullo:
+        Ritorna vero  // Albero vuoto è un ABR
+    Se nodo.valore <= minValore o nodo.valore >= maxValore:
+        Ritorna falso  // Violazione della proprietà ABR
+    Ritorna (èABR(nodo.sinistro, minValore, nodo.valore) e èABR(nodo.destro, nodo.valore, maxValore))
+    }
+
+    Funzione èRedBlackABR(nodo):
+    // Caso base: un albero vuoto è un Red-Black ABR
+    Se nodo è nullo:
+        Ritorna vero
+    
+    // Verifica proprietà colore del nodo corrente
+    Se nodo.colore non è rosso e nodo.colore non è nero:
+        Ritorna falso
+    
+    // Verifica proprietà dei cammini neri
+    Se contaNeriDaRadice(nodo) = -1:
+        Ritorna falso
+    
+    // Verifica ricorsiva per sottoalberi
+    Ritorna èRedBlackABR(nodo.sinistro) e èRedBlackABR(nodo.destro)
+
+Funzione contaNeriDaRadice(nodo):
+    // Restituisce l'altezza nera dei cammini dalla radice al nodo corrente
+    Se nodo è nullo:
+        Ritorna 1  // Nodo nullo contribuisce con un nodo nero
+    
+    // Calcola altezze nere per sottoalberi
+    altezzaNeraSinistro = contaNeriDaRadice(nodo.sinistro)
+    altezzaNeraDestro = contaNeriDaRadice(nodo.destro)
+    
+    // Verifica che i sottoalberi abbiano la stessa altezza nera
+    Se altezzaNeraSinistro ≠ altezzaNeraDestro o altezzaNeraSinistro = -1 or altezzaNeraDestro = -1:
+        Ritorna -1  // Violazione delle proprietà Red-Black
+    
+    // Aggiunge uno per il nodo corrente
+    Se nodo.colore = nero:
+        Ritorna altezzaNeraSinistro + 1
+    Se nodo.colore = rosso:
+        Ritorna altezzaNeraSinistro
+
+
+
