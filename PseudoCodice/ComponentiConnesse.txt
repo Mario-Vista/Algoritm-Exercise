@@ -1,0 +1,7 @@
+ComponentiConnesse(G){
+	for each v in G.V
+		MakeSet(v)
+	for each(u,v) in G.E
+		if FindSet(u)!= FindSet(v)
+			Union(u,v)
+}

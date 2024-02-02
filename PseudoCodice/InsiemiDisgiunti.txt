@@ -1,0 +1,24 @@
+MakeSet(x){
+	x.p = x
+	x.rank = 0
+}
+
+FindSet(x){
+	if x.p != x
+		x = x.p
+	return x.p
+}
+
+Union(x,y){
+	Link(FindSet(x), FindSet(y))
+}
+
+Link(x,y){
+	if x.rank > y.rank
+		y.p = x
+	else x.p = y
+
+	if x.rank = y.rank
+		y.rank++
+}
+

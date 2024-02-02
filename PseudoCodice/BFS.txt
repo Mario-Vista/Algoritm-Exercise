@@ -1,4 +1,20 @@
 BFS(G,s){
     for each v in G.V
+        v.d = 0
+        v.p = NIL
+
+    s.p = nil
+    s.d = 0
+    Q=new queue
+    s = enqueue(Q)
+    while Q!=empty
+        u = dequeue(Q)
+        for each v in u.adj
+            if v.color = white
+                v.color = grey
+                v.p = u
+                v.d = u.d+1
+                enqueue(v,Q)
+        u.color = black
         
 }

@@ -1,0 +1,10 @@
+Kruskal(G,w){
+	A=empty
+	for each v in G.V
+		MakeSet(v)
+	Sort G.E non decrescente
+	for each (u,v) in G.E
+		A = AU{u,v}
+		Union(u,v)
+	return A
+}

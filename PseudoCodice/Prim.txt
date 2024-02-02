@@ -1,0 +1,13 @@
+Prim(G,w,s){
+	for each u in G.V -{s}
+		u.key = inf
+		u.p = nil
+	s.key = 0
+	Q = G.V
+	while Q!=empty
+		u = ExtractMin(Q)
+		for each v in u.adj
+			if v is in Q and v.key > w(u,v)
+				v.p = key
+				v.key = w(u,v)
+}

@@ -1,0 +1,26 @@
+BellmanFord(G,w,s){
+	Initialize_Single_Source(G,s)
+	for i = 1 to V-1
+		for each (u,v) in G.E
+			Relax(u,v,w)
+		for each(u,v) in G.E
+			if v.d > u.d+w(u,v)
+				return false
+	return true
+
+}
+
+Initialize_Single_Source(G,s){
+	for each v in G.V -{s}
+		v.d=inf
+		v.p=nil
+	s.p=nil
+	s.d=0
+}
+
+
+Relax(u,v,w){
+	if v.d > u.d+w(u,v)
+		v.p=u
+		v.d=u.d+w(u,v)
+}

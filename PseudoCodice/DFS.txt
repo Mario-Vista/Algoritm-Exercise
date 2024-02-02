@@ -1,0 +1,21 @@
+DFS(G){
+for each u in G.V
+	time = 0
+	u.color = white
+	u.p = nil
+for each u in G.V
+	if u.color = white
+		DFS_VISIT(u)
+}
+
+DFS_VISIT(u){
+	u.color = grey
+	u.d = time = time+1
+	for each v in u.adj
+		if v.color = white
+			v.p = u
+			DFS_VISIT(v)
+	u.color = black
+	u.f = time = time+1
+
+}

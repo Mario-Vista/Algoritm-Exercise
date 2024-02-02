@@ -1,0 +1,25 @@
+Dijkstra(G,w,s){
+	Initialize_Singe_Source(G,s)
+	S=empty
+	Q=G.V
+	while Q!=empty
+		u = extractmin(Q)
+		S=SU{u}
+		for each v in u.adj
+			Relax(u,v,w)
+}
+
+Initialize_Single_Source(G,s){
+	for each v in G.V -{s}
+		v.d=inf
+		v.p=nil
+	s.p=nil
+	s.d=0
+}
+
+
+Relax(u,v,w){
+	if v.d > u.d+w(u,v)
+		v.p=u
+		v.d=u.d+w(u,v)
+}
