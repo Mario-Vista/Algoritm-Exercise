@@ -20,10 +20,25 @@
 
 
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 
 int main()
 {
-    std::cout << "Esercizio rispetta i versi" << std::endl;
+    cout << "Esercizio rispetta i versi" << endl;
+    
+    string prova;
+
+    prova = "fratemo ci serve il mare e il sole";
+
+    cout << prova.at(8) << endl;
+
+    string s2 = prova;
+
+    cout << s2 << endl;
+
+    
     return 0;
-}
+}   

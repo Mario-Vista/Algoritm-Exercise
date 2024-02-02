@@ -1,0 +1,11 @@
+//Pseudocodice che implementa l'algoritmo di Insertion Sort
+
+InsertionSort{
+    for j = 2 to A.lenght
+        key = A[j]
+        i = j-1
+        while(i > 0 and A[i] > key)
+            do A[i+1] = A[i]
+            i=i-1
+        A[i+1] = key
+}

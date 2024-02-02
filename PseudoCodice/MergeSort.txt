@@ -1,0 +1,33 @@
+//Pseudocodice che implementa l'algoritmo di Merge Sort
+
+MergeSort(A,p,q){
+    if p<q{
+        r=(p+q)/2
+        MergeSort(A,p,r)
+        MergeSort(A,r+1,q)
+        Merge(A,p,q,r)
+    }
+}
+
+MergeSulPosto(A,p,q,r){
+MERGE (𝑨, 𝒑, 𝒒, 𝒓)
+ n1= q-p+1
+ n2=r-q
+ Crea due nuovi array L[1…n1+1] e R[1…n2 +1]
+ for i=1 to n1
+    L[i] = A[p+i-1]
+ for j=1 to n2
+    R[j] = A[q+j]
+ L[n1 +1]=+ ∞
+ R[n2 +1]=+ ∞
+ i=1
+ j=1
+ for k=p to r
+    if L[i] ≤R[j]
+        A[k]=L[i]
+        i=i+1
+    else A[k]=R[j]
+        j=j+1
+}
+
+//MANCA UNA VARIANTE

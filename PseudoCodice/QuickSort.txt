@@ -1,0 +1,23 @@
+//Algoritmo in Pseudocodice che implementa l'algoritmo di QuickSort
+
+QuickSort(A,p,r){
+    if p<R
+        q=Partition(A,p,r)
+        QuickSort(A,p,q)
+        QuickSort(A,q+1,r)
+}
+
+PartitionHoare(A,p,r){
+    x = A[p]
+    i = p-1
+    j = r+1
+    while TRUE
+    do repeat j = j-1
+        until A[j] <=x
+    do repeat i = i+1
+        until A[i] >=x
+        if i<j then swap A[i],A[j]
+            else return j
+}
+
+//MANCA UNA VARIANTE

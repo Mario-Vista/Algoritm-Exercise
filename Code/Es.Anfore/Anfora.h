@@ -16,19 +16,22 @@
 class Anfora: public Contenitore
 {
     private:
-    int capacity;
-    bool isPiena();
-    bool isVuota();
+    int capacity;       //attributo per la capienza massima dell'anfora
+    bool isPiena();     //metodo per verificare se l'anfora è piena
+    bool isVuota();     //metodo per verificare se l'anfora è vuota
 
     public:
+    //costruttore della classe figlia
     Anfora(int cap):capacity(cap), Contenitore() {}
 
-    void riempi();
-    void svuota();
-    int getCapacity(){return this->capacity;}
-    void spostaContenuto(Anfora &);
+    void riempi();                                  //metodo per riempire l'anfora
+    void svuota();                                  //metodo per svuotare l'anfora
+    int getCapacity(){return this->capacity;}       //metodo getter per la capacità
+    void spostaContenuto(Anfora &);                 //metodo che sposta il contenuto da un'anfora all'altra
 
 };
+
+//implementazione dei metodi
 
 bool Anfora::isPiena()
 {

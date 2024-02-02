@@ -1,0 +1,4 @@
+BFS(G,s){
+    for each v in G.V
+        
+}
