@@ -1,45 +1,46 @@
-isABR(nodo, minValore, maxValore){
-    Se nodo è nullo:
-        Ritorna vero  // Albero vuoto è un ABR
-    Se nodo.valore <= minValore o nodo.valore >= maxValore:
-        Ritorna falso  // Violazione della proprietà ABR
-    Ritorna (èABR(nodo.sinistro, minValore, nodo.valore) e èABR(nodo.destro, nodo.valore, maxValore))
+isABR(node, minVal, maxVal){
+    if nodo is nil
+        return true  // Albero vuoto è un ABR
+    if nodo.valore <= minValore o nodo.valore >= maxValore:
+        return false  // Violazione della proprietà ABR
+    return (isABR(node.left, minVal, node.val),isABR(node.right, node.val, maxVal))
     }
 
-    Funzione èRedBlackABR(nodo):
-    // Caso base: un albero vuoto è un Red-Black ABR
-    Se nodo è nullo:
-        Ritorna vero
-    
-    // Verifica proprietà colore del nodo corrente
-    Se nodo.colore non è rosso e nodo.colore non è nero:
-        Ritorna falso
-    
-    // Verifica proprietà dei cammini neri
-    Se contaNeriDaRadice(nodo) = -1:
-        Ritorna falso
-    
-    // Verifica ricorsiva per sottoalberi
-    Ritorna èRedBlackABR(nodo.sinistro) e èRedBlackABR(nodo.destro)
+isRedBlackABR(node){
+    if isABR{
+        // Caso base: un albero vuoto è un Red-Black ABR
+        if node = nil
+            return true
+        
+        // Verifica proprietà colore del nodo corrente
+        if node.color!=red and node.color!=black
+            return false
+        
+        // Verifica proprietà dei cammini neri
+        if contaNeriDaRadice(node) = -1:
+            return false
+        
+        // Verifica ricorsiva per sottoalberi
+        return isRedBlackABR(node.left)and isRedBlackABR(node.right)
+    } else return false
+}
 
-Funzione contaNeriDaRadice(nodo):
+contaNeriDaRadice(nodo){
     // Restituisce l'altezza nera dei cammini dalla radice al nodo corrente
-    Se nodo è nullo:
-        Ritorna 1  // Nodo nullo contribuisce con un nodo nero
+    if node=nil
+        return 1  // Nodo nullo contribuisce con un nodo nero
     
     // Calcola altezze nere per sottoalberi
-    altezzaNeraSinistro = contaNeriDaRadice(nodo.sinistro)
-    altezzaNeraDestro = contaNeriDaRadice(nodo.destro)
+    altezzaNeraSinistro = contaNeriDaRadice(node.left)
+    altezzaNeraDestro = contaNeriDaRadice(node.right)
     
     // Verifica che i sottoalberi abbiano la stessa altezza nera
-    Se altezzaNeraSinistro ≠ altezzaNeraDestro o altezzaNeraSinistro = -1 or altezzaNeraDestro = -1:
-        Ritorna -1  // Violazione delle proprietà Red-Black
+    if altezzaNeraSinistro != altezzaNeraDestro or altezzaNeraSinistro = -1 or altezzaNeraDestro = -1:
+        return -1  // Violazione delle proprietà Red-Black
     
     // Aggiunge uno per il nodo corrente
-    Se nodo.colore = nero:
-        Ritorna altezzaNeraSinistro + 1
-    Se nodo.colore = rosso:
-        Ritorna altezzaNeraSinistro
-
-
-
+    Se node.color = black:
+        return altezzaNeraSinistro + 1
+    Se node.color = red:
+        return altezzaNeraSinistro
+}
