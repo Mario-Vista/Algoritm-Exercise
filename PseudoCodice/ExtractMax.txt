@@ -1,0 +1,44 @@
+Heap-Maximum(A){
+	return A[1]
+}
+
+Heap-Extract-Max(A){
+	if heapSize(A)=0
+		underflow
+	max=A[i]
+	swap (A[1],A[heapSize(A)])
+	heapSize(A)=heapSize(A)-1
+	Max-Heapify(A,1)
+	return max
+}
+
+Heap-Increase-Key(A,i,key){
+	if key < A[i]
+		"Invalid data"
+	A[i] = key
+	while i>1 and A[p(i)]<A[i]
+		swap (A[p(i)],A(i))
+		i=p(i)
+}
+
+MaxHeapify(A, i){
+    l = left[i]
+    r = right[i]
+    if A[i] < A[l] and l <=A.heapsize
+        max = l 
+    else max = i
+    if A[max] < A[r] and r <=A.heapsize
+        max = r
+    if max!=i
+        swap A[i] A[max]
+        MaxHeapify(A,max)
+}
+
+Max-Heap-Insert(A,key){
+	HeapSize(A)=HeapSize(A)+1
+	i=heapSize(A)
+	while i>1 and A[p(i)]<key
+		A[i]=A[p(i)]
+		i=p(i)
+	A[i]=key
+}

@@ -1,0 +1,22 @@
+Fibonacci(i){
+	if (i=0)
+		return 1
+	if(i=1)
+		return 1
+	numero=Fibonacci(i-1)+Fibonacci(i-2)
+}
+
+Fibo_mem(i){
+	if(KnFibonacci[i]!=0)
+		return KnFibonacci[i]
+	if(i=1 or i=0)
+		return 1
+	KnFibonacci[i] = Fibonacci(i-1)+Fibonacci(i-2)
+	return KnFibonacci[i]
+}
+
+Num_Fibonacci(i){
+	for(j=1 to MAXNUM)
+		KnFibonacci[j]=0
+	Fibonacci(i)
+}

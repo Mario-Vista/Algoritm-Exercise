@@ -1,0 +1,4 @@
+Se v è bianco -> arco all'albero
+Se v è grigio -> arco all'indietro
+Se v è nero e u.d<v.d-> arco in avanti
+Se v è nero e u.d>v.d-> arco trasversale
