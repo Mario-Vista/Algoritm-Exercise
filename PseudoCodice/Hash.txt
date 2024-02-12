@@ -1,0 +1,23 @@
+Hash_Insert(T,k){
+	i=0
+	repeat
+		j=h(k,i)
+		if T[j]=NIL
+			T[j]=k
+			return j
+		else
+			i++
+	until i=m
+	overflow
+}
+
+Hash_Search(T,k){
+	i=0
+	repeat
+		j=h(k,i)
+		if T[j]=k
+			return j
+		i=i++
+	until T[j]==NIl or i==m
+	return NIL
+}

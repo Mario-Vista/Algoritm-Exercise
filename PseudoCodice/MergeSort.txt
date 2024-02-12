@@ -10,7 +10,6 @@ MergeSort(A,p,q){
 }
 
 MergeSulPosto(A,p,q,r){
-MERGE (𝑨, 𝒑, 𝒒, 𝒓)
  n1= q-p+1
  n2=r-q
  Crea due nuovi array L[1…n1+1] e R[1…n2 +1]

@@ -5,3 +5,19 @@ ComponentiConnesse(G){
 		if FindSet(u)!= FindSet(v)
 			Union(u,v)
 }
+
+ComponentiFortementeConnesse{
+	L=new Stack
+	for each u in G.V
+		u.color=white
+		u.p=nil
+	time=0
+	for each u in G.V
+	TS_DFS_VISIT
+	create Grafo Trasposto
+	while L != empty
+		v=L.pop
+		if v.color=white
+		DFS_VISIT(v)
+	SCC=prececessor subgraph
+}
