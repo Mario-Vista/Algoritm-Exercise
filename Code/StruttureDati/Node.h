@@ -26,7 +26,7 @@ Node<T>::Node(Node<T>* next, T* info)
     this->next = next;
     this->data = info;
 }
-data
+
 template <class T>
 Node<T>::~Node()
 {
