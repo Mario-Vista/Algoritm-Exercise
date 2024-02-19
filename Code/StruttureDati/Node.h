@@ -6,7 +6,7 @@ class Node
 {
     private:
         Node<T>* next;
-        T* value;
+        T* data;
 
     public:
         Node<T>(Node<T> *next, T* info);
@@ -31,7 +31,7 @@ template <class T>
 Node<T>::~Node()
 {
     delete next;
-    delete obj;
+    delete data;
 } 
 
 
