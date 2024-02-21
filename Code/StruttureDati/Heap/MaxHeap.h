@@ -36,7 +36,7 @@ class MaxHeap
     public:
         MaxHeap(vector<T> *);
         MaxHeap();
-        //~MaxHeap();
+        ~MaxHeap();
 
         void insert(T);
         void print();
@@ -56,6 +56,12 @@ MaxHeap<T>::MaxHeap()
 {
     this->tree = new vector<T>;
     this->heapSize=0;
+}
+
+template <typename T>
+MaxHeap<T> :: ~MaxHeap()
+{
+    delete tree;
 }
 
 template <typename T>
