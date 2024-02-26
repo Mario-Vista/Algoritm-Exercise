@@ -36,6 +36,7 @@ class Vertice
         //metodi setter
         void setValue(T newVal){this->value = newVal;}
         void setColor(Color newCol){this->color=newCol;}
+        void setPredecessore(Vertice<T> *predecessore){this->predecessore=predecessore;}
         void setDistanza(int newDis){this->distanza=newDis;}
         void setTempoD(int newTime){this->tempoD=newTime;}
         void setFineVisitaF(int newEnd){this->fineVisitaF=newEnd;}
@@ -47,13 +48,13 @@ class Vertice
             switch (obj.color)
             {
             case Color :: WHITE: 
-                c = "White"
+                c = "White";
                 break;
             case Color :: GREY: 
-                c = "Grey"
+                c = "Grey";
                 break;
             case Color :: BLACK: 
-                c = "Black"
+                c = "Black";
                 break;            
             default:
                 break;
