@@ -44,11 +44,10 @@ template<class T>
 list<Vertex<T>*> NonOrientedGraph<T> ::getAdjList(Vertex<T>*source)
 {
     for(auto i : graph)
-    {
         if(i.getSource() == source)
             return i.getAdjList();
-        return graph.at(0).getAdjList();
-    }
+    return graph.at(0).getAdjList();
+
 }
 
 template <class T>
@@ -76,13 +75,13 @@ void NonOrientedGraph<T>::dfsVisit(Vertex<T>* u)
     auto adj = this->getAdjList(u);
 
     for(auto v: adj)
-        if(v.getSource()->getColor() == Color::WHITE)
+        if(v->getColor() == Color::WHITE)
         {
             v->setPredecessor(u);
             this->dfsVisit(v);
         }
     u->setColor(Color::BLACK);
-    u->setEndTimeVisit(++this->time);
+    u->setEndVisitTime(++this->time);
 }
 
 template <class T>

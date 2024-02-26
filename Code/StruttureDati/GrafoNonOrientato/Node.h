@@ -10,10 +10,10 @@ using namespace std;
 template <class T>
 class Node
 {
-    public:
+    private:
         Vertex<T> *source;
         list<Vertex<T>*> adjList;
-    private:
+    public:
         Node(Vertex<T>* source):source{source}{};
 
         Vertex<T>* getSource(){return this->source;}

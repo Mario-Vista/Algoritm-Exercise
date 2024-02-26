@@ -60,8 +60,6 @@ int main(){
     cout << "***Grafo Non Orientato***" << endl;
     cout << grafoNonOrientato;
 
-    grafoNonOrientato.componentiConnesse();
-    grafoNonOrientato.viewComponentiConnesse();
 
     // GrafoNonOrientatoPesato<string> grafoNonOrientatoPesato;
 
