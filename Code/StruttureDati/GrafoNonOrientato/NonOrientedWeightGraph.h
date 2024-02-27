@@ -58,8 +58,15 @@ class NonOrientedWeightGraph
     list<Vertex<T>*> verticiEstratti;
     list<Vertex<T>*> getListaAdj();
     priority_queue< Vertex<T>*, vector<Vertex<T>*>, confronta<T> > minQueue;    //usata per prim
-    Vertice<T>* makeSet(vertice<T>*)
+    void makeSet(vertice<T>*);
+    void unionA(Vertex<T>*, Vertex<T>*);
+    void link(Vertex<T>*, Vertex<T>*);
+    Vertice<T>* findSet(Vertex<T>*);
 
+    public:
+        NonOrientedWeightGraph(){
+            w.resize(VERTEX_NUMBER);
+        }
 
     
 
