@@ -42,7 +42,7 @@ class OrientedGraph
 
         //topological sort
         void tsDfs();
-        void tsDfsVisit();
+        void tsDfsVisit(Vertice<T>*);
         void printTs();
 
         //grafo trasposto
@@ -72,7 +72,12 @@ class OrientedGraph
         void bfs(Vertice<T>*);
         void dfs();
 
-        void isDag();
+        bool isDag(){
+            if ( this->dfsCycle() )
+                    return false;
+            return true;
+        }
+
         void topologicalSort();
         void calculateSCC();
 };
@@ -88,6 +93,8 @@ list<Vertice<T> *> OrientedGraph<T>::getAdjList(Vertice<T> *vertex)
     return graph.at(0).getListaAdiacenze();
 }
 
+
+//BFS
 template <class T>
 void OrientedGraph<T> :: bfs(Vertice<T> *source)
 {
@@ -123,6 +130,8 @@ void OrientedGraph<T> :: bfs(Vertice<T> *source)
     }
 }
 
+
+//DFS
 template <class T>
 void OrientedGraph<T> :: dfs()
 {
@@ -153,7 +162,7 @@ void OrientedGraph<T> :: dfsVisit(Vertice<T>* u)
         cout << endl << this->edgeClassification(u, v);
         if(v->getColor() == Color::WHITE){
             v->setPredecessore(u);
-            this->dfs(v);
+            this->dfsVisit(v);
         }
     }
     u->setColor(Color::BLACK);
@@ -161,6 +170,8 @@ void OrientedGraph<T> :: dfsVisit(Vertice<T>* u)
 }
 
 
+
+//Classificazione archi
 template <class T> string OrientedGraph<T>::edgeClassification(Vertice<T>* u, Vertice<T>* v){
     if ( v->getColor() == Color::WHITE )
         return "Arco dell'Albero";
@@ -171,5 +182,108 @@ template <class T> string OrientedGraph<T>::edgeClassification(Vertice<T>* u, Ve
     else 
         return "Arco Trasversale";
 }
+
+
+//Rilevamento cicli
+template <class T>
+bool OrientedGraph<T> :: dfsCycle()
+{
+    this->cycle == false;
+    for (auto u : graph)
+    {
+        u.getSource()->setColor(Color::WHITE);
+        u.getSource()->setDistanza(0);
+    }
+
+    this->timeDfs = 0;
+
+    for(auto u : graph)
+    {
+        if(u.getSource()->getColor() == Color::WHITE)
+            this->dfsVisitCycle(u.getSource());
+    }
+    return cycle;
+}
+
+template <class T>
+void OrientedGraph<T> :: dfsVisitCycle(Vertice<T>* u)
+{
+    u->setColor(Color::GREY);
+    u->setTempoD(++timeDfs);
+
+    auto adj = this->getAdjList(u);
+
+    for(auto v : adj)
+    {
+        if(v->getColor() == Color ::WHITE)
+        {
+            v->setPredecessore(u);
+            this->dfsVisitCycle(v);
+        }
+        else if(v->getColor() == Color ::GREY)
+            this->cycle == true;
+    }
+    u->setColor(Color::BLACK);
+    u->setFineVisitaF(++timeDfs);
+}
+
+
+//Ordinamento Topologico
+template <class T>        
+void OrientedGraph<T> :: tsDfs()
+{
+    for (auto u: graph){
+        u.getSource()->setColor(Color::WHITE);
+        u.getSource()->setPredecessore(nullptr);
+        this->timeDfs = 0;
+    }
+    for (auto u: graph)
+        if (u.getSource()->getColor() == Color::WHITE)
+            this->tsDfsVisit(u.getSource());
+}
+
+template <class T> 
+void OrientedGraph<T>::tsDfsVisit(Vertice<T>* u){
+
+    u->setColor(Color::GREY);
+    u->setTempoD(++timeDfs);
+
+    auto adj = this->getAdjList(u);
+
+    for (auto v: adj){
+        if (v->getColor() == Color::WHITE){
+            v->setPredecessore(u);
+            this->tsDfsVisit(v);
+        }
+    }
+    u->setColor(Color::BLACK);
+    u->setFineVisitaF(++timeDfs);
+    L.Push(u);
+}
+
+template <class T>
+ void OrientedGraph<T>::topologicalSort(){
+
+    if ( this->isDag() ){
+        this->tsDfs();
+        cout << endl << "***ORDINAMENTO TOPOLOGICO***" << endl;
+        this->printTs();
+    } else
+        cout << endl << "***SONO PRESENTI DEI CICLI***" << endl; 
+}
+
+
+
+template <class T>
+void OrientedGraph<T>::printTs(){
+    while (!L.isEmpty())
+        cout << *(L.Pop()) << " --> ";
+    cout << "NULL" << endl << endl;
+}
+
+
+
+
+
 
 #endif //ORIENTEDGRAPH_H

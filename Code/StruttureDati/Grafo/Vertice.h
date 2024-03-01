@@ -31,7 +31,7 @@ class Vertice
 
         friend ostream& operator<<(ostream& out, const Vertice<T> &out)
         {
-            out << "Value: " << obj.value << " D: " << obj.distanza;
+            out << "Value: " << obj.value << " D : " << obj.distanza;
             return out;
         }
 };

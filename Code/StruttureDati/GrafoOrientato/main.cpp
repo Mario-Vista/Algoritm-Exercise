@@ -34,51 +34,51 @@ int main(){
      grafoOrientato.bfs(&a);
      cout << grafoOrientato;
 
-    // GrafoOrientato<string> grafoSconnesso;
+    OrientedGraph<string> grafoSconnesso;
 
-    // Vertice<string> u("U");
-    // Vertice<string> v("V");
-    // Vertice<string> w("W");
-    // Vertice<string> x("X");
-    // Vertice<string> y("Y");
-    // Vertice<string> z("Z");
+    Vertice<string> u("U");
+    Vertice<string> v("V");
+    Vertice<string> w("W");
+    Vertice<string> x("X");
+    Vertice<string> y("Y");
+    Vertice<string> z("Z");
 
-    // grafoSconnesso.addVertice(&u);
-    // grafoSconnesso.addVertice(&v);
-    // grafoSconnesso.addVertice(&w);
-    // grafoSconnesso.addVertice(&x);
-    // grafoSconnesso.addVertice(&y);
-    // grafoSconnesso.addVertice(&z);
+    grafoSconnesso.addVertex(&u);
+    grafoSconnesso.addVertex(&v);
+    grafoSconnesso.addVertex(&w);
+    grafoSconnesso.addVertex(&x);
+    grafoSconnesso.addVertex(&y);
+    grafoSconnesso.addVertex(&z);
 
-    // grafoSconnesso.addEdge(0, &v);
-    // grafoSconnesso.addEdge(0, &x);
-    // grafoSconnesso.addEdge(1, &y);
-    // grafoSconnesso.addEdge(2, &y);
-    // grafoSconnesso.addEdge(2, &z);
-    // grafoSconnesso.addEdge(3, &v);
-    // grafoSconnesso.addEdge(4, &x);
-    // grafoSconnesso.addEdge(5, &z);
+    grafoSconnesso.addEdge(0, &v);
+    grafoSconnesso.addEdge(0, &x);
+    grafoSconnesso.addEdge(1, &y);
+    grafoSconnesso.addEdge(2, &y);
+    grafoSconnesso.addEdge(2, &z);
+    grafoSconnesso.addEdge(3, &v);
+    grafoSconnesso.addEdge(4, &x);
+    grafoSconnesso.addEdge(5, &z);
 
-    // cout << endl << "***Grafo Orientato Sconnesso***" << endl;
-    // grafoSconnesso.depthFirstSearch();
-    // cout << endl << grafoSconnesso;
+    cout << endl << "***Grafo Orientato Sconnesso***" << endl;
+    grafoSconnesso.dfs();
+    cout << endl << grafoSconnesso;
 
-    // GrafoOrientato<string> DAG;
+    OrientedGraph<string> DAG;
 
-    // Vertice<string> g("G");
-    // Vertice<string> h("H");
-    // Vertice<string> i("I");
+    Vertice<string> g("G");
+    Vertice<string> h("H");
+    Vertice<string> i("I");
 
-    // DAG.addVertice(&g);
-    // DAG.addVertice(&h);
-    // DAG.addVertice(&i);
+    DAG.addVertex(&g);
+    DAG.addVertex(&h);
+    DAG.addVertex(&i);
 
-    // DAG.addEdge(0, &h);
-    // DAG.addEdge(1, &i);
+    DAG.addEdge(0, &h);
+    DAG.addEdge(1, &i);
 
-    // cout << endl << "***Grafo Orientato Aciclico***" << endl;
-    // DAG.ordinamentoTopologico();
-    // cout << DAG;
+    cout << endl << "***Grafo Orientato Aciclico***" << endl;
+    DAG.topologicalSort();
+    cout << DAG;
 
     /*OrientedGraph<string> grafoOrientatoSCC;
 
