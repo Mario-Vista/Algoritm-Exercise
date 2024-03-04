@@ -5,6 +5,12 @@
 
 using namespace std;
 
+/**
+ * Il MaxHeap è una struttura dati composta da un array che può essere considerato come un albero binario quasi completo, cioè tutti i livelli tranne l'ultimo sono completi
+ * La sua proprietà per ogni nodo diverso dalla radice è che A[parent(i)]>=A[i]
+ * 
+*/
+
 template <typename T>
 class MaxHeap
 {
@@ -12,14 +18,19 @@ class MaxHeap
         vector<T> *tree;
         int heapSize;
 
+        //formule per calcolare figlio sinistro e destro
         int left(int i){return 2*i+1;}
         int right(int i){return 2*i+2;}
 
+        //metodo per costruire il max heap
         void buildMaxHeap();
 
     protected:
+
+        //metodo per il calcolo del padre
         int parent(int i){return (i-1)/2;}
 
+        
         T getRoot(){return this->tree->at(0);}
         T getTail(){return this->tree->at(0);}
 
@@ -29,11 +40,15 @@ class MaxHeap
         void setHeapSize(int newSize) {this->heapSize= newSize;}
         int getHeapSize(){return this->heapSize;}
 
+        //metodo per la stampa
         void inOrderAscii(int, int);
+
+        //metodo per mantenere la proprietà dell'heap
         void maxHeapify(int);
         void swap(T&, T&);
 
     public:
+    //costruttori e distruttore
         MaxHeap(vector<T> *);
         MaxHeap();
         ~MaxHeap();
