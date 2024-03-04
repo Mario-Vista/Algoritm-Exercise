@@ -35,7 +35,7 @@ class MaxHeap
         T getTail(){return this->tree->at(0);}
 
         vector<T>* getTree(){return this->tree;}
-        void setTree(int i, T key){this->tree->at(i);}
+        void setTree(int i, T key){this->tree->at(i) = key;}
         
         void setHeapSize(int newSize) {this->heapSize= newSize;}
         int getHeapSize(){return this->heapSize;}
