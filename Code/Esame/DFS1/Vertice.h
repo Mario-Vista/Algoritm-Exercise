@@ -26,7 +26,7 @@ class Vertice
         int fineV;
     
     public:
-        Vertice(T value);
+        Vertice(T value):value{value}, color{Color::WHITE}, distanza{UINT16_MAX}, predecessore{nullptr}, inizioV{0}, fineV{0}{};
 
         void setValue(T value){this->value = value;}
         void setColor(Color color){this->color = color;}
@@ -45,7 +45,7 @@ class Vertice
         friend ostream& operator<<(ostream& out, const Vertice<T> &obj)
         {
             string c;
-            switch(obj.colore)
+            switch(obj.color)
             {
                 case Color :: WHITE: c = "WHITE"; break;
                 case Color::GREY: c = "GREY";break;
