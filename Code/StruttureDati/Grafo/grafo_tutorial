@@ -1,0 +1,23 @@
+Graph tutorial
+
+classe Vertice:
+T value
+int distanza
+vertice<t>* predecessore
+int currID
+int ID
+
+getter/setter
+
+classe Nodo:
+vertice<T>* sorgente;
+list<vertice<t>*> lista adiacenze
+
+append(push_back lista adiacenza)
+getter
+
+classe grafo:
+vector<Node<T>> grafo
+
+addvertice (vertice<t>* vertice)
+addarco (int i, vertice<t>* vertice
