@@ -15,7 +15,7 @@ template <typename T>
 class MaxHeap
 {
     private:
-        vector<T> *tree;
+        vector<T> tree;
         int heapSize;
 
         //formule per calcolare figlio sinistro e destro
@@ -31,11 +31,11 @@ class MaxHeap
         int parent(int i){return (i-1)/2;}
 
         
-        T getRoot(){return this->tree->at(0);}
-        T getTail(){return this->tree->at(0);}
+        T getRoot(){return this->tree.at(0);}
+        T getTail(){return this->tree.at(0);}
 
-        vector<T>* getTree(){return this->tree;}
-        void setTree(int i, T key){this->tree->at(i) = key;}
+        vector<T> getTree(){return this->tree;}
+        void setTree(int i, T key){this->tree.at(i) = key;}
         
         void setHeapSize(int newSize) {this->heapSize= newSize;}
         int getHeapSize(){return this->heapSize;}
@@ -49,21 +49,21 @@ class MaxHeap
 
     public:
     //costruttori e distruttore
-        MaxHeap(vector<T> *);
+        MaxHeap(vector<T>);
         MaxHeap();
         ~MaxHeap();
 
         void insert(T);
         void print();
         void printAsciiTree();
-        void printTree();
+        void heapSort();
 };
 
 template <typename T>
-MaxHeap<T>::MaxHeap(vector<T>* tree)
+MaxHeap<T>::MaxHeap(vector<T> tree)
 {
     this->tree = tree;
-    this->heapSize=tree->size();
+    this->heapSize=tree.size();
     buildMaxHeap();
 }
 
@@ -77,7 +77,6 @@ MaxHeap<T>::MaxHeap()
 template <typename T>
 MaxHeap<T> :: ~MaxHeap()
 {
-    delete tree;
 }
 
 template <typename T>
@@ -88,15 +87,15 @@ void MaxHeap<T>::maxHeapify(int i)
 
     int max=i;
 
-    if(leftTree < heapSize && this->tree->at(max) < this->tree->at(leftTree))
+    if(leftTree < heapSize && this->tree.at(max) < this->tree.at(leftTree))
         max=leftTree;
     
-    if(rightTree < heapSize && this->tree->at(max) < this->tree->at(rightTree))
+    if(rightTree < heapSize && this->tree.at(max) < this->tree.at(rightTree))
         max=rightTree;
 
     if(max !=i)
     {
-        swap(this->tree->at(i), this->tree->at(max));
+        swap(this->tree.at(i), this->tree.at(max));
         maxHeapify(max);
     }
 }
@@ -118,11 +117,11 @@ template <typename T>
 void MaxHeap<T> :: insert(T key)
 {
     heapSize++;
-    this->tree->push_back(key);
+    this->tree.push_back(key);
     int i = heapSize-1;
-    while(i != 0 && this->tree->at(parent(i)) < this->tree->at(i))
+    while(i != 0 && this->tree.at(parent(i)) < this->tree.at(i))
     {
-        swap(this->tree->at(i), this->tree->at(parent(i)));
+        swap(this->tree.at(i), this->tree.at(parent(i)));
         i=parent(i);
     }
 }
@@ -132,7 +131,7 @@ void MaxHeap<T> :: print()
 {
     cout << endl << "****Max Heap****" << endl;
     for(int i = 0; i < heapSize; i++)
-        cout << tree->at(i) << " ";
+        cout << tree.at(i) << " ";
 }
 
 template <typename T>
@@ -155,11 +154,21 @@ void MaxHeap<T> :: inOrderAscii(int i, int spazio)
     cout << endl;
     for(int i = 5; i < spazio; i++)
         cout << " ";
-    cout << this->tree->at(i) << endl;
+    cout << this->tree.at(i) << endl;
 
     inOrderAscii(left(i), spazio);
 }
 
-
+template <class T>
+void MaxHeap<T> :: heapSort()
+{
+    buildMaxHeap();
+    for(int i = getHeapSize()-1; i>= 0; i--)
+    {
+        swap(tree.at(0), tree.at(i));
+        setHeapSize(i);
+        maxHeapify(0);
+    }
+}
 
 #endif //MAXHEAP_H
