@@ -144,7 +144,7 @@ T Bst<T> :: predecessor(Node<T> *node)
 {
     if(node->getLeft() != nullptr)
     {
-        return this->minimum(node->getLeft());
+        return this->maximum(node->getLeft());
     }
 
     auto y = node->getParent();
