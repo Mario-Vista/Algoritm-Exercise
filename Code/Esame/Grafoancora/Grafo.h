@@ -45,8 +45,9 @@ list<Vertice<T>*> Grafo<T> :: getListaAdj(Vertice<T>* vertice)
 {
 	for(auto i: grafo)
 		if(i.getSource() == vertice)
-			return i.getAdjList();
-	return this->grafo.at(0).getAdjList();
+			return i.getListaAdj();
+	return this->grafo.at(0).getListaAdj
+();
 }
 
 
@@ -82,7 +83,7 @@ void Grafo<T> :: dfs()
 	for(auto i : grafo)
 	{
 		i.getSource()->setColor(Color::WHITE);
-		i.getSource()->setPredecessore() = nullptr;
+		i.getSource()->setPredecessore(nullptr);
 		time = 0;
 	}
 	for(auto i : grafo)
@@ -104,7 +105,7 @@ void Grafo<T>::dfsVisit(Vertice<T>* u)
 		}
 	u->setColor(Color::BLACK);
 	u->setFineV(++time);
-	q.push(u->getValue);
+	q.push(u->getValue());
 }
 
 

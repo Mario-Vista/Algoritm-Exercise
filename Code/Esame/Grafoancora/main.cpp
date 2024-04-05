@@ -50,6 +50,8 @@ int main()
 	cout << "prima della dfs" << endl;
 	cout << grafo << endl;
 
+	grafo.dfs();
+
 	cout << "dopo dfs" << endl;
 	cout << grafo << endl;
 
