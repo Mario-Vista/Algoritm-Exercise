@@ -51,8 +51,6 @@ class Vertice
         {
             return a.value == b.value;
         }
-    
-
 };
 
 
