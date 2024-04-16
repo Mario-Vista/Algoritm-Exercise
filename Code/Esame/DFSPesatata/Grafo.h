@@ -46,8 +46,7 @@ list<Vertice<T>*> Grafo<T> :: getListaAdj(Vertice<T>* vertice)
 	for(auto i: grafo)
 		if(i.getSource() == vertice)
 			return i.getListaAdj();
-	return this->grafo.at(0).getListaAdj
-();
+	return this->grafo.at(0).getListaAdj();
 }
 
 
@@ -107,7 +106,7 @@ void Grafo<T>::dfsVisit(Vertice<T>* u)
 	u->setFineV(++time);
 	q.push(u->getValue());
 }
-
+	
 
 
 

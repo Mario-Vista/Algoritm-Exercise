@@ -2,10 +2,10 @@
 #define GRAFO_H
 
 #include <iostream>
+#include "Vertice.h"
+#include "Nodo.h"
 #include <vector>
 #include <list>
-#include "Nodo.h"
-#include "Vertice.h"
 
 using namespace std;
 
@@ -14,24 +14,13 @@ class Grafo
 {
     private:
         vector<Nodo<T>> grafo;
-        list<Vertice<T>*> getListaG(Vertice<T>* vertice);
-        int time;
+        list<Vertice<T>*> getListaAdjG();
+
         void dfsVisit(Vertice<T>* u);
-
-    public: 
+    public:
         Grafo(){ };
-        void addArco(Nodo<T> v1, Nodo<T> v2);
-        void addNodo(V)
-
-
-
-        void dfs();
+        
 
 };
-
-
-
-
-
 
 #endif //GRAFO_H

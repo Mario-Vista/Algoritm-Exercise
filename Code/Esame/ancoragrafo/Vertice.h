@@ -2,55 +2,56 @@
 #define VERTICE_H
 
 #include <iostream>
-#include <limits>
 #include <string>
+#include <limits>
 
 using namespace std;
 
 enum class Color{
-    WHITE,GREY,BLACK
-};
+    white,grey,black
+};  
 
 template <class T>
-class Vertice
-{
+class Vertice{
     private:
-        T value;
         Color color;
+        T value;
         Vertice<T>* predecessore;
         int inizioV;
         int fineV;
 
     public:
-        Vertice(T value): value{value}, color{Color::WHITE}, predecessore{nullptr}, inizioV{UINT16_MAX}, fineV{UINT16_MAX} { };
-        
-        //getter
-        T getValue(){return this->value;}
+        Vertice(T value): value{value}, color{Color::white},predecessore{nullptr}, inizioV{UINT16_MAX}, fineV{UINT16_MAX} {};
         Color getColor(){return this->color;}
+        T getValue(){return this->value;}
         Vertice<T>* getPredecessore(){return this->predecessore;}
-        
-        //setter
-        void setValue(T newVal){this->value = newVal;}
-        void setColor(Color newCol){this->color = newCol;}
-        void setPredecessore(Vertice<T>* newPrede){this->predecessore = newPrede;}
+        int getInizioV(){return this->inizioV;}
+        int getFineV(){return this->fineV;}
+        void setColor(Color color){this->color = color;}
+        void setValue(T value){this->value = value;}
+        void setPredecessore(Vertice<T>* predecessore){this->predecessore = predecessore;}
+        void setInizioV(int inizioV){this->inizioV = inizioV;}
+        void setFineV(int fineV){this->fineV = fineV;}
 
-        friend ostream& operator<<(ostream& out, const Vertice<T>& obj)
+        friend ostream& operator<<(ostream& out, const Vertice<T>&obj)
         {
             string c;
             switch(obj.color)
             {
-                case Color::WHITE: c = "WHITE";break;
-                case Color::GREY: c = "GREY";break;
-                case Color::BLACK: c = "BLACK";break;
+                case Color::white: c = "white";break;
+                case Color::grey: c = "grey";break;
+                case Color::black: c = "black";break;
+                default: break;
             }
-            out << "Value -> " << obj.value << " Color -> " << c;
-            return out;
+            out << "Value -> " << obj.value << " Color -> " << c << endl;
+            return out; 
         }
 
-        friend bool operator==(const Vertice<T>&a, const Vertice<T>&b)
+        friend bool operator==(const Vertice<T>&a, const Vertice<T>& b)
         {
             return a.value == b.value;
         }
+
 };
 
 
