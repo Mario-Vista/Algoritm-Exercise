@@ -5,36 +5,28 @@
 #include <list>
 #include "Vertice.h"
 
-template <class T, class WeightType>
+template <class T>
 class Nodo
 {
     private:
         Vertice<T>* source;
-        list<pair<Vertice<T>*, WeightType>> listaAdj;
-
+        list<Vertice<T>*> listaAdjN;
     public:
-        Nodo(Vertice<T>* source){this->source = source;}
-        
-        //i setter non servono
-
-        //getter
+        Nodo(Vertice<T>* source): source{source}{};
         Vertice<T>* getSource(){return this->source;}
+        list<Vertice<T>*> getListaAdjN(){return this->listaAdjN;}
 
-        list<pair<Vertice<T>*, WeightType>> getListaAdj(){return this->listaAdj;}
+        void append(Vertice<T>* vert){this->listaAdjN.push_back(vert);}
 
-        void append(Vertice<T>* vertice, WeightType peso){this->listaAdj.push_back(make_pair(vertice, peso));}
-
-        friend ostream& operator<<(ostream& out, const Nodo<T, WeightType>& obj)
+        friend ostream& operator<<(ostream& out, const Nodo<T>& obj)
         {
             out << *obj.source << " -> ";
-            for(auto i: obj.listaAdj)
-            {
-                out <<  "( " << i.first->getValue() << ", Peso: " << i.second << ") -> ";
-            }
-
+            for(auto i : obj.listaAdjN)
+                out << *i << " -> ";
             out << "null";
             return out;
-        }    
+        }       
+
 };
 
 #endif //NODO_H
