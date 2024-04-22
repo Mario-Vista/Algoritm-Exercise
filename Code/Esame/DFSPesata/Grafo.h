@@ -50,7 +50,7 @@ list<Vertice<T>*> Grafo<T, WeightType>::getListAdj(Vertice<T>* vertice) {
                 adjVertices.push_back(edge.first);
             }
             break;
-        }
+        }    
     }
     return adjVertices;
 }

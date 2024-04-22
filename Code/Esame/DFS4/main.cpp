@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
     Grafo<int> grafo;
-//ciao
+
     ifstream input;
     string myInput = "input.txt";
 
