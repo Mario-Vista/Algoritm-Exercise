@@ -9,7 +9,7 @@ using namespace std;
 
 template <class T>
 class MaxHeap
-{
+{ 
 	private:
 		vector<T> *tree;
 		int heapSize;
@@ -23,7 +23,7 @@ class MaxHeap
 		void swap(T& a, T&b);
 		void setHeapSize(int i){this->heapSize = i;}
 
-	public:
+	public:	
 		MaxHeap(vector<T>*tree);
 		void insert(T);
 		void printTree();
