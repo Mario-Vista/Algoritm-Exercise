@@ -50,7 +50,7 @@ Bst<T> :: Bst()
     this->root = nullptr;
 }
 
-
+//accesso pubblico all'inserimento
 template <class T>
 void Bst<T> :: insert(T key)
 {
@@ -60,6 +60,7 @@ void Bst<T> :: insert(T key)
         this->insert(key, nullptr, this->root);
 }
 
+//versione ricorsiva e privata  
 template <class T>
 void Bst<T> :: insert(T key, Node<T> *prev, Node<T> *curr)
 {
@@ -75,7 +76,7 @@ template <class T>
 void Bst<T> :: insertNodo(T key, Node<T> *prev, Node<T> *curr)
 {
     if(prev == nullptr)
-        curr == new Node<T>(key);
+        curr = new Node<T>(key);
     else
     {
         curr = new Node<T>(key);

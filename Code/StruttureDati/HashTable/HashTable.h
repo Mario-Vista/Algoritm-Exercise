@@ -1,5 +1,5 @@
-#ifndef HASH_TABLE_HPP
-#define HASH_TABLE_HPP
+#ifndef HASH_TABLE_H
+#define HASH_TABLE_H
 
 #include <iostream>
 #include <vector>
@@ -64,4 +64,4 @@ int HashTable<T>::hash_search(T key) {
     return -1;
 }
 
-#endif // HASH_TABLE_HPP
+#endif // HASH_TABLE_H

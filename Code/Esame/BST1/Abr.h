@@ -47,7 +47,7 @@ void Abr<T> :: insertNodo(T value, Nodo<T>* prev, Nodo<T>* curr)
     if(curr->getInfo() < prev->getInfo())
         prev->setLeft(curr);
     else
-        prev->setLeft(curr);
+        prev->setRight(curr);
 }
 
 template <class T>
