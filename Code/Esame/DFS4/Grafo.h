@@ -27,6 +27,7 @@ class Grafo
         int searchAddress(Vertice<T>* vertice);
         Vertice<T>* getIndirizzoVertice(T value);
 
+ 
         friend ostream& operator<<(ostream& out, const Grafo<T>& obj)
         {
             for(auto i : obj.grafo)
