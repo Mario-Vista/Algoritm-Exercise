@@ -51,7 +51,7 @@ Bst<T> :: Bst()
 }
 
 //accesso pubblico all'inserimento
-template <class T>
+template <class T> 
 void Bst<T> :: insert(T key)
 {
     if(this->root==nullptr)

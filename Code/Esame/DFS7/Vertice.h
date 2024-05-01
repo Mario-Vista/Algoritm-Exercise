@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <limits>
+#include <cstdint>
+
+#define lim UINT16_MAX
 
 using namespace std;
 
@@ -21,7 +24,7 @@ class Vertice
 	Vertice<T>* predecessore;
 
 	public:
-	Vertice(T value): value{value}, color{Color::white}, inizioV{UINT16_MAX}, fineV{UINT16_MAX}, predecessore{nullptr} {};
+	Vertice(T value): value{value}, color{Color::white}, inizioV{lim}, fineV{lim}, predecessore{nullptr} {};
 
 	T getValue(){return this->value;}
 	Color getColor(){return this->color;}
