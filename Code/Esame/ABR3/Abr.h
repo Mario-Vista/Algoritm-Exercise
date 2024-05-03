@@ -9,34 +9,33 @@ using namespace std;
 template <class T>
 class Abr
 {
-	private:
-		Nodo<T>* root;
-		void insert(T, Nodo<T>*, Nodo<T>*);
-		void insertNodo(T, Nodo<T>*, Nodo<T>*);
+private:
+	Nodo<T>* root;
+	void insert(T, Nodo<T>*, Nodo<T>*);
+	void insertNodo(T, Nodo<T>*, Nodo<T>*);
 
-		void preOrder(Nodo<T>*);
-		void inOrder(Nodo<T>*);
-		void postOrder(Nodo<T>*);
+	void preOrder(Nodo<T>*);
+	void inOrder(Nodo<T>*);
+	void postOrder(Nodo<T>*);
 
-	public:
-		Abr(Nodo<T>* root);
-		Abr();
+public:
+	Abr(Nodo<T>* root);
+	Abr();
 
-		Nodo<T>* getRoot(){return this->root;}
+	Nodo<T>* getRoot(){return this->root;}
+	void insert(T);
+	
+	T minimum();
+	T maximum();
+	T minimum(Nodo<T>*);
+	T maximum(Nodo<T>*);
 
-		void insert(T);
+	T predecessor(Nodo<T>*);
+	T successor(Nodo<T>*);
 
-		T minimum();
-		T maximum();
-		T minimum(Nodo<T>* nodo);
-		T maximum(Nodo<T>* nodo);
-
-		T successor(Nodo<T>*);
-		T predecessor(Nodo<T>*);
-
-		void preOrder();
-		void postOrder();
-		void inOrder();
+	void preOrder();
+	void postOrder();
+	void inOrder();
 };
 
 template <class T>
@@ -71,7 +70,6 @@ void Abr<T> :: insert(T value, Nodo<T>* prev, Nodo<T>* curr)
 		this->insert(value, curr, curr->getLeft());
 }
 
-
 template <class T>
 void Abr<T> :: insertNodo(T value, Nodo<T>* prev, Nodo<T>* curr)
 {
@@ -91,22 +89,20 @@ void Abr<T> :: insertNodo(T value, Nodo<T>* prev, Nodo<T>* curr)
 template <class T>
 T Abr<T> :: minimum()
 {
-	auto tmp = root;
+	auto tmp = this->root;
 	while(tmp->getLeft() != nullptr)
 		tmp = tmp->getLeft();
 	return tmp->getValue();
 }
 
-
 template <class T>
 T Abr<T> :: maximum()
 {
-	auto tmp = root;
+	auto tmp = this->root;
 	while(tmp->getRight() != nullptr)
 		tmp = tmp->getRight();
 	return tmp->getValue();
 }
-
 
 template <class T>
 T Abr<T> :: minimum(Nodo<T>* nodo)
@@ -115,7 +111,6 @@ T Abr<T> :: minimum(Nodo<T>* nodo)
 		nodo = nodo->getLeft();
 	return nodo->getValue();
 }
-
 
 template <class T>
 T Abr<T> :: maximum(Nodo<T>* nodo)
@@ -150,26 +145,7 @@ T Abr<T> :: successor(Nodo<T>* nodo)
 		nodo = y;
 		y = y->getParent();
 	}
-
 	return y->getValue();
-}
-
-template <class T>
-void Abr<T> :: preOrder()
-{
-	this->preOrder(this->root);
-}
-
-template <class T>
-void Abr<T> :: inOrder()
-{
-	this->inOrder(this->root);
-}
-
-template <class T>
-void Abr<T> :: postOrder()
-{
-	this->postOrder(this->root);
 }
 
 template <class T>
@@ -177,9 +153,9 @@ void Abr<T> :: preOrder(Nodo<T>* curr)
 {
 	if(curr == nullptr)
 		return;
-	cout << curr->getValue() << " ";
-	this->preOrder(curr->getLeft());
-	this->preOrder(curr->getRight());
+	cout << curr->getValue() << endl;
+	preOrder(curr->getLeft());
+	preOrder(curr->getRight());
 }
 
 template <class T>
@@ -187,9 +163,10 @@ void Abr<T> :: inOrder(Nodo<T>* curr)
 {
 	if(curr == nullptr)
 		return;
-	this->inOrder(curr->getLeft());
-	cout << curr->getValue() << " ";
-	this->inOrder(curr->getRight());
+
+	inOrder(curr->getLeft());
+	cout << curr->getValue() << endl;
+	inOrder(curr->getRight());
 }
 
 template <class T>
@@ -197,9 +174,28 @@ void Abr<T> :: postOrder(Nodo<T>* curr)
 {
 	if(curr == nullptr)
 		return;
-	this->postOrder(curr->getLeft());
-	this->postOrder(curr->getRight());
-	cout << curr->getValue() << " ";
+	postOrder(curr->getLeft());
+	postOrder(curr->getRight());
+	cout << curr->getValue() << endl;
+}
+
+template <class T>
+void Abr<T> :: inOrder()
+{
+	this->inOrder(root);
+}
+
+template <class T>
+void Abr<T> :: preOrder()
+{
+	this->preOrder(root);
+}
+
+
+template <class T>
+void Abr<T> :: postOrder()
+{
+	this->postOrder(root);
 }
 
 
