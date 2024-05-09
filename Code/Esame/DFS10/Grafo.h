@@ -8,31 +8,30 @@
 #include "Nodo.h"
 #include "Vertice.h"
 
-//using namespace std;
+using namespace std;
 
 template <class T>
 class Grafo
 {
 private:
-	std::vector<Nodo<T>> grafo;
-	std::list<Vertice<T>*> getListaAdj(Vertice<T>*);
+	vector<Nodo<T>> grafo;
+	list<Vertice<T>*> getListaAdj(Vertice<T>* vert);
 	int time;
-	std::queue<T> q;
+	queue<T> q;
 	void dfsVisit(Vertice<T>* u);
 
 public:
 	Grafo(){};
-	
-	std::queue<T> getQueue(){return this->q;}
+	queue<T> getQueue(){return this->q;}
+	void dfs();
+	int searchIndex(Vertice<T>*);
+	Vertice<T>* searchVert(T value);
 	void addNodo(Nodo<T> nodo){this->grafo.push_back(nodo);}
 	void addArco(Vertice<T>* v1, Vertice<T>* v2);
-	void dfs();
-	int searchIndex(Vertice<T>* vert);
-	Vertice<T>* searchVert(T value);
 };
 
 template <class T>
-std :: list<Vertice<T>*> Grafo<T> :: getListaAdj(Vertice<T>* vert)
+list<Vertice<T>*> Grafo<T> :: getListaAdj(Vertice<T>* vert)
 {
 	for(auto i : grafo)
 		if(i.getSource() == vert)
@@ -44,7 +43,7 @@ template <class T>
 int Grafo<T> :: searchIndex(Vertice<T>* vert)
 {
 	for(int i = 0; i < grafo.size(); i++)
-		if(grafo.at(i).getSource() == vert)
+		if(this->grafo.at(i).getSource() == vert)
 			return i;
 	return -1;
 }
@@ -53,7 +52,7 @@ template <class T>
 Vertice<T>* Grafo<T> :: searchVert(T value)
 {
 	for(auto i : grafo)
-		if(i.getSource()->getValue() == value)
+		if(i.getSource().getValue() == value)
 			return i.getSource();
 	return nullptr;
 }
@@ -75,8 +74,8 @@ void Grafo<T> :: dfs()
 	}
 	time = 0;
 	for(auto i : grafo)
-		if(i.getSource()->getColor() == Color::white())
-			dfsVisit(i.getSource()); 
+		if(i.getSource()->getColor() == Color::white)
+			dfsVisit(i.getSource());
 }
 
 template <class T>
@@ -84,16 +83,17 @@ void Grafo<T> :: dfsVisit(Vertice<T>* u)
 {
 	u->setColor(Color::grey);
 	u->setInizioV(++time);
-
 	list<Vertice<T>*> adj = getListaAdj(u);
-
 	for(auto i : adj)
-		if(i->getColor() == Color::white)
+		if(i->getColor() == Color :: white)
+		{
 			i->setPredecessore(u);
 			dfsVisit(i);
+		}
 	u->setColor(Color::black);
-	u->setFineV(++time);	
-	q.push(u);
+	u->setFineV(++time);
+	q.push(u->getValue());
 }
+
 
 #endif //GRAFO_H

@@ -1,37 +1,34 @@
 #include <iostream>
-#include <vector>
-#include <queue>
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <queue>
 #include "Grafo.h"
 #include "Nodo.h"
 #include "Vertice.h"
 
+using namespace std;
+
 int main()
 {
 	Grafo<int> grafo;
-	ifstream inputFile("input.txt");
-	ofstream outputFile("output.txt");
+	ifstream iFile("input.txt");
+	ofstream oFile("output.txt");
 
 	string line;
-	int i = 0, numVertici = 0, numArchi = 0,vertice, arco;
-
-	while(getline(inputFile, line))
+	int i, numVertici = 0, numArchi = 0, vertice, arco;
+	while(getline(iFile, line))
 	{
 		stringstream lineIn(line);
 		if(i == 0)
 		{
-			lineIn >> numVertici;
-			lineIn >> numArchi;
-
-			i++;
+			lineIn>>numVertici;
+			lineIn>>numArchi;
 		}
 		else
 		{
-			lineIn >> vertice;
-			lineIn >> arco;
-
+			lineIn>>vertice;
+			lineIn>>arco;
 			auto *v1 = new Vertice<int>(vertice);
 			auto *v2 = new Vertice<int>(arco);
 
@@ -39,20 +36,24 @@ int main()
 				grafo.addNodo(v1);
 			if(grafo.searchIndex(v2) == -1)
 				grafo.addNodo(v2);
+
 			grafo.addArco(v1, v2);
+
 		}
 	}
 
-	inputFile.close();
+	iFile.close();
 
-	auto q = grafo.getQueue();
+	grafo.dfs();
+	auto queue = grafo.getQueue();
 
-	while(!q.empty)
+	while(!queue.empty())
 	{
-		outputFile << q.front() << endl;
-		q.pop();
+		oFile << queue.front();
+		queue.pop();
 	}
-	outputFile.close();
+
+	oFile.close();
 
 
 	return 0;

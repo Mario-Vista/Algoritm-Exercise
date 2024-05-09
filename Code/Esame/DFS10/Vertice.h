@@ -21,9 +21,9 @@ private:
 	Vertice<T>* predecessore;
 	int inizioV;
 	int fineV;
-
 public:
-	Vertice(T value): value(value), color{Color::white}, predecessore(nullptr), inizioV(UINT16_MAX), fineV(UINT16_MAX){}	;
+	Vertice(T value):value(value), color(Color::white), predecessore(nullptr), inizioV(UINT16_MAX), fineV(UINT16_MAX){};
+
 	T getValue(){return this->value;}
 	Color getColor(){return this->color;}
 	Vertice<T>* getPredecessore(){return this->predecessore;}
@@ -32,14 +32,19 @@ public:
 
 	void setValue(T value){this->value = value;}
 	void setColor(Color color){this->color = color;}
-	void setPredecessore(Vertice<T>* vertice){this->predecessore = vertice;}
-	void setInizioV(int inizio){this->inizioV = inizio;}
-	void setFineV(int fine){this->fineV = fine;}
+	void setPredecessore(Vertice<T>* predecessore){this->predecessore = predecessore;}
+	void setInizioV(int inizioV){this->inizioV = inizioV;}
+	void setFineV(int fineV){this->fineV = fineV;}
 
-	friend bool operator==(const Vertice<T>& a, const Vertice<T>& b)
+	friend bool operator==(const Vertice<T>&a, const Vertice<T>&b)
 	{
 		return a.value == b.value;
 	}
+
+
 };
+
+
+
 
 #endif //VERTICE_H
