@@ -111,7 +111,7 @@ T Abr<T> :: predecessor(Nodo<T>* nodo)
 	if(nodo->getLeft() == nullptr)
 		return maximum(nodo);
 	auto y = nodo->getParent();
-	while(y != nullptr && nodo = y->getLeft())
+	while(y != nullptr && nodo == y->getLeft())
 	{
 		nodo = y;
 		y = y->getParent();
@@ -125,7 +125,7 @@ T Abr<T> :: successor(Nodo<T>* nodo)
 	if(nodo->getRight() == nullptr)
 		return minimum(nodo);
 	auto y = nodo->getParent();
-	while(y != nullptr && nodo = y->getRight())
+	while(y != nullptr && nodo == y->getRight())
 	{
 		nodo = y;
 		y = y->getParent();

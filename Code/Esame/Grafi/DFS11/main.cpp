@@ -16,7 +16,8 @@ int main()
 	ofstream oFile("output.txt");
 
 	string line;
-	int i, numVertici = 0, numArchi = 0, vertice, arco;
+	int i = 0, numVertici = 0, numArchi = 0, vertice, arco;
+
 	while(getline(iFile, line))
 	{
 		stringstream lineIn(line);
@@ -24,6 +25,7 @@ int main()
 		{
 			lineIn>>numVertici;
 			lineIn>>numArchi;
+			i++;
 		}
 		else
 		{
@@ -31,28 +33,25 @@ int main()
 			lineIn>>arco;
 			auto *v1 = new Vertice<int>(vertice);
 			auto *v2 = new Vertice<int>(arco);
-
 			if(grafo.searchIndex(v1) == -1)
 				grafo.addNodo(v1);
 			if(grafo.searchIndex(v2) == -1)
 				grafo.addNodo(v2);
-
-			grafo.addArco(v1, v2);
-
+			grafo.addArco(v1,v2);
 		}
 	}
 
 	iFile.close();
 
 	grafo.dfs();
+
 	auto queue = grafo.getQueue();
 
 	while(!queue.empty())
 	{
-		oFile << queue.front();
+		oFile << queue.front() << endl;
 		queue.pop();
 	}
-
 	oFile.close();
 
 

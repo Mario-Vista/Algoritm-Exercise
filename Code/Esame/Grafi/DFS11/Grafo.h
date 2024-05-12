@@ -24,10 +24,11 @@ public:
 	Grafo(){};
 	queue<T> getQueue(){return this->q;}
 	void dfs();
-	int searchIndex(Vertice<T>*);
+	int searchIndex(Vertice<T>* vert);
 	Vertice<T>* searchVert(T value);
 	void addNodo(Nodo<T> nodo){this->grafo.push_back(nodo);}
-	void addArco(Vertice<T>* v1, Vertice<T>* v2);
+	void addArco(Vertice<T>*v1, Vertice<T>*v2);
+
 };
 
 template <class T>
@@ -43,7 +44,7 @@ template <class T>
 int Grafo<T> :: searchIndex(Vertice<T>* vert)
 {
 	for(int i = 0; i < grafo.size(); i++)
-		if(this->grafo.at(i).getSource() == vert)
+		if(grafo.at(i).getSource() == vert)
 			return i;
 	return -1;
 }
@@ -58,10 +59,10 @@ Vertice<T>* Grafo<T> :: searchVert(T value)
 }
 
 template <class T>
-void Grafo<T> :: addArco(Vertice<T>* v1, Vertice<T>* v2)
+void Grafo<T> :: addArco(Vertice<T>*v1, Vertice<T>*v2)
 {
-	int vert = searchIndex(v1);
-	this->grafo.at(vert).append(v2);
+	int vertice = searchIndex(v1);
+	this->grafo.at(vertice).append(v2);
 }
 
 template <class T>
@@ -83,17 +84,22 @@ void Grafo<T> :: dfsVisit(Vertice<T>* u)
 {
 	u->setColor(Color::grey);
 	u->setInizioV(++time);
+
 	list<Vertice<T>*> adj = getListaAdj(u);
+
 	for(auto i : adj)
-		if(i->getColor() == Color :: white)
-		{
-			i->setPredecessore(u);
+		if(i->getColor() == Color::white)
 			dfsVisit(i);
-		}
 	u->setColor(Color::black);
 	u->setFineV(++time);
 	q.push(u->getValue());
+
 }
+
+
+
+
+
 
 
 #endif //GRAFO_H
