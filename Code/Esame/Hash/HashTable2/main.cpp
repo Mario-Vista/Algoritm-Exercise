@@ -48,7 +48,7 @@ public:
 		ofstream oFile(fileName);
 		for(auto &bucket : table)
 			for(auto& element : bucket)
-				oFile << "key: [ " << element.key << " ] Value: [" << element.value << " ]" << endl;
+				oFile << "key: [ " << element.key << " ] Value: [ " << element.value << " ]" << endl;
 
 	}
 
