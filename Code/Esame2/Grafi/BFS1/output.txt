@@ -1,0 +1,15 @@
+Value-> 1 Color-> black->Value-> 2 Color-> black->null
+Value-> 2 Color-> black->null
+Value-> 1 Color-> white->Value-> 3 Color-> white->null
+Value-> 3 Color-> white->null
+Value-> 2 Color-> white->Value-> 3 Color-> white->null
+Value-> 3 Color-> white->null
+Value-> 2 Color-> white->Value-> 4 Color-> white->null
+Value-> 4 Color-> white->null
+Value-> 3 Color-> white->Value-> 4 Color-> white->null
+Value-> 4 Color-> white->null
+Value-> 4 Color-> white->Value-> 5 Color-> white->null
+Value-> 5 Color-> white->null
+Value-> 5 Color-> white->Value-> 1 Color-> white->null
+Value-> 1 Color-> white->null
+
