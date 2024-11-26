@@ -13,7 +13,8 @@ int main()
     while(iFile>>num)
         vec.push_back(num);
     MaxHeap<int> heap(&vec);
-    heap.printTree();
+        
+    cout << endl;
     heap.heapSort();
     heap.printTree();
 }

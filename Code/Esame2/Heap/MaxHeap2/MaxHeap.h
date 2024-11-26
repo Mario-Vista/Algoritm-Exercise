@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -103,9 +104,11 @@ void MaxHeap<T> :: heapSort()
 template <class T>
 void MaxHeap<T> :: printTree()
 {
+        ofstream oFile("output.txt");
+
     for(int i = 0;i < tree->size(); i++)
-        cout <<this->tree->at(i) << " ";
-    cout << endl;
+        oFile <<this->tree->at(i) << " ";
+    oFile << endl;
 }
 
 
