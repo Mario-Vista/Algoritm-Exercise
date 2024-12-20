@@ -1,0 +1,12 @@
+Value->1 Color->black (Value->2 Color->black, peso =4)
+
+Value->2 Color->black 
+
+Value->2 Color->black (Value->3 Color->black, peso =5)
+
+Value->3 Color->black 
+
+Value->3 Color->black (Value->1 Color->black, peso =2)
+
+Value->1 Color->black 
+

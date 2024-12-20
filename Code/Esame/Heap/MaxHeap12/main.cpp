@@ -19,9 +19,6 @@ int main()
 	heap.printTree();
 	heap.heapSort();
 	heap.printTree();
-
-
-
-
+	
 	return 0;
 }

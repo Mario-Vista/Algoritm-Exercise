@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <list>
-#include "Nodo.h"
+#include "Vertice.h"
 
 using namespace std;
 
