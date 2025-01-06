@@ -1,0 +1,3 @@
+Value->1 Color->black -> (Value->2 Color->black, peso=4) -> null
+Value->2 Color->black -> (Value->3 Color->black, peso=5) -> null
+Value->3 Color->black -> (Value->1 Color->black, peso=2) -> null

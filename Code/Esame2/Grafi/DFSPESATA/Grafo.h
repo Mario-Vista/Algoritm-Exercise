@@ -21,7 +21,7 @@ public:
     Grafo() {}
     void addNodo(Nodo<T> nodo) { grafo.push_back(nodo);}
     void addArco(Vertice<T>* v1, Vertice<T>* v2, int peso);
-    int searchIndex(Vertice<T>* v);    
+    int searchIndex(Vertice<T>* v);
     Vertice<T>* searchVert(T val);    
     void dfs();
 
